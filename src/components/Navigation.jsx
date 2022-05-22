@@ -9,7 +9,7 @@ import {
 
 function Navigation() {
     return (
-        <Navbar collapseOnSelect fixed-top bg="primary" variant="dark" expand="lg">
+        <Navbar collapseOnSelect fixed-top='true' bg="primary" variant="dark" expand="lg">
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>Seeds Chat</Navbar.Brand>

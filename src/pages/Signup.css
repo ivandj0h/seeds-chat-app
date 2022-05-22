@@ -6,3 +6,19 @@
     background-repeat: no-repeat;
     overflow-x: hidden;
 }
+
+signup-profile-pic__container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.signup-profile-pic {
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid grey;
+    object-fit: cover;
+    height: 100px;
+    cursor: pointer;
+}
