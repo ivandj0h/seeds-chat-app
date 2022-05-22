@@ -33,9 +33,32 @@ function Signup() {
         setPreviewImg(URL.createObjectURL(file));
     }
 
-    function handleSignUp(e) {
+    async function uploadImage() {
+        const data = new FormData();
+        data.append('file', image);
+        data.append('upload_preset', 'ivandjoh');
+        try {
+            setUploadingImg(true);
+
+            let res = await fetch('https://api.cloudinary.com/v1_1/ivandjoh/image/upload', {
+                method: 'POST',
+                body: data
+            })
+
+            let resData = await res.json();
+            setUploadingImg(false);
+            return resData.url;
+        } catch (error) {
+            setUploadingImg(false);
+            console.log(error);
+        }
+    }
+
+    async function handleSignUp(e) {
         e.preventDefault();
-        console.log('signup');
+        if (!image) return alert('Please upload Your image!');
+        const url = await uploadImage(image);
+        console.log(url);
     }
 
     return (
@@ -65,10 +88,7 @@ function Signup() {
                         <Form.Control type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} value={password} />
                     </Form.Group>
                     <Col md={12}>
-                        <Button variant="success" type="submit">
-                            Create Account
-                        </Button>
-
+                        <Button variant="success" type="submit">{uploadinImg ? 'Processing...' : 'Create Account'}</Button>
                     </Col>
                     <div>
                         <p className='text-left text-muted mt-3'>Already have Account? <Link to='/login'>Login</Link></p>
