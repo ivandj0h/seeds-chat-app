@@ -5,15 +5,17 @@ import {
     Col
 } from 'react-bootstrap'
 import Sidebar from '../components/Sidebar'
+import MessageForm from '../components/MessageForm'
+
 
 function Chat() {
     return (
-        <Container>
+        <Container className='mt-4'>
             <Row>
-                <Col md={6}>
+                <Col md={4}>
                     <Sidebar />
                 </Col>
-                <Col md={6}>
+                <Col md={8}>
                     <MessageForm />
                 </Col>
             </Row>
